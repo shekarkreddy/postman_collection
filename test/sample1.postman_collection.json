@@ -1,0 +1,120 @@
+{
+	"info": {
+		"_postman_id": "33000749-f375-4e13-9866-50317f6e1c1a",
+		"name": "sample1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "test",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "4e15ecb7-f8a8-4200-8bc9-d403b50b330c",
+						"exec": [
+							" let email=_.random(1000)+'@domain.com'\r",
+							" pm.environment.set('email',email)\r",
+							"\r",
+							"//let pswd=pm.environment.get(\"password\")\r",
+							"\r",
+							" //pm.environment.set('password',pswd)\r",
+							" \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "ecec459a-96d5-450b-af87-59aa9f13cc88",
+						"exec": [
+							"pm.test(\"Status code is 201\", function(){",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"",
+							"//pm.test(\"Password validation\", function () {",
+							"   // var jsonData = pm.response.json();",
+							"//   pm.expect(jsonData.password).to.equal(pm.environment.get(\"pswd\"));",
+							"//})",
+							"pm.test(\"email validation\", function () {",
+							"    var jsonData = pm.response.json();",
+							"pm.expect(jsonData.email).to.equal(pm.environment.get(\"email\"));",
+							"});",
+							"",
+							"pm.test(\"password validation\", function () {",
+							"    var req = JSON.parse(pm.request.body.raw);",
+							"    pm.environment.set(\"password\", req.password);",
+							"",
+							"    var resp = pm.response.json();",
+							"    pm.environment.set(\"password\", resp.password);",
+							"    pm.expect(resp.password).to.equal(pm.environment.get(\"password\"));",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"email\": \"{{email}}\",\r\n \"password\": \"pisntol1\",\r\n \"tester\": \"shekar\"\r\n    \r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "144b4ea1-5f43-42df-aaa2-9f84c9737aa3",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "71b1122f-7a3a-4ccd-ba65-cc4ef94b8dfc",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "405fb591-0efb-4930-8c01-ce024a7c2806",
+			"key": "RandomNumber",
+			"value": "",
+			"type": "string",
+			"disabled": true
+		}
+	],
+	"protocolProfileBehavior": {}
+}

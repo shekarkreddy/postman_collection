@@ -1,0 +1,16 @@
+{
+  "name": "postman",
+  "version": "1.0.0",
+  "description": "sample test",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "api-test": "newman run test/sample1.postman_collection.json",
+    "api-test-report": "newman run test/sample1.postman_collection.json -r htmlextra"
+  },
+  "dependencies": {
+    "newman-reporter-htmlextra": "^1.14.1"
+  }
+}
