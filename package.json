@@ -8,7 +8,8 @@
   },
   "scripts": {
     "api-test": "newman run test/sample1.postman_collection.json",
-    "api-test-report": "newman run test/sample1.postman_collection.json -r htmlextra"
+    "api-test-report": "newman run test/sample1.postman_collection.json -r htmlextra",
+    "api-test": "newman run test/sample1.postman_collection.json  --reporters junit --reporter-junit-export newman.xml"
   },
   "dependencies": {
     "newman-reporter-htmlextra": "^1.14.1"
